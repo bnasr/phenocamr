@@ -8,7 +8,8 @@ process_phenocam(file, outlier_detection = TRUE, smooth = TRUE,
   contract = FALSE, daymet = FALSE, trim_daymet = TRUE,
   trim = NULL, phenophase = FALSE, out_dir = tempdir(),
   internal = FALSE, snow_flag = FALSE, snow_weight = 1,
-  save_gcc90 = FALSE, weights_as_n = FALSE, span = NULL)
+  save_gcc90 = FALSE, weights_as_n = FALSE, span = NULL,
+  wiggle_penalty = 0.5)
 }
 \arguments{
 \item{file}{1 or 3-day PhenoCam time series file path}
@@ -42,6 +43,8 @@ not down weighted in smoothing (default = 1)}
 \item{weights_as_n}{whether to use sum of the weights in AIC formula}
 
 \item{span}{customized span list or variable, default is NULL}
+
+\item{wiggle_penalty}{penalty value for noise and wiggle in greenness, default value is 0.5}
 }
 \value{
 Downloaded files in out_dir of requested time series products, as well

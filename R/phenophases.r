@@ -8,6 +8,7 @@
 #' @param mat mean annual temperature
 #' @param internal return PhenoCam data file or data frame
 #' @param out_dir output directory
+#' @param wiggle_penalty penalty value for noise and wiggle in greenness, default value is 0.5
 #' @param ... pass parameters to the transition_dates() function
 #' @return Estimates of transition dates for both rising and falling parts of a
 #' PhenoCam time series. All time series are evaluated (gcc_90, gcc_75, etc).
@@ -39,6 +40,7 @@ phenophases = function(data,
                        mat = NULL,
                        internal = TRUE,
                        out_dir = tempdir(),
+                       wiggle_penalty = 0.5,
                        ...
                        ){
 
@@ -80,6 +82,7 @@ phenophases = function(data,
     tmp = suppressWarnings(transition_dates(data,
                            reverse = FALSE,
                            percentile = i,
+                           penalty = wiggle_penalty,
                            ...))
     
     # screen for false rising parts
@@ -103,6 +106,7 @@ phenophases = function(data,
     tmp = suppressWarnings(transition_dates(data,
                            reverse = TRUE,
                            percentile = i,
+                           penalty = wiggle_penalty,
                            ...))
     
     # screen for false falling curves

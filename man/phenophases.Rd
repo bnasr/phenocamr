@@ -5,7 +5,7 @@
 \title{Calculates phenophases, for rising and falling parts of a time series}
 \usage{
 phenophases(data, mat = NULL, internal = TRUE, out_dir = tempdir(),
-  ...)
+  wiggle_penalty = 0.5, ...)
 }
 \arguments{
 \item{data}{a PhenoCam data file (or data frame)}
@@ -15,6 +15,8 @@ phenophases(data, mat = NULL, internal = TRUE, out_dir = tempdir(),
 \item{internal}{return PhenoCam data file or data frame}
 
 \item{out_dir}{output directory}
+
+\item{wiggle_penalty}{penalty value for noise and wiggle in greenness, default value is 0.5}
 
 \item{...}{pass parameters to the transition_dates() function}
 }
