@@ -20,6 +20,7 @@
 #' @param save_gcc90 whether to save the plot output for gcc_90 timeseries (as a test)
 #' @param weights_as_n whether to use sum of the weights in AIC formula
 #' @param wiggle_penalty penalty value for noise and wiggle in greenness, default value is 0.5
+#' @param mat mean annual temperature
 #' @return Downloaded files in out_dir of requested time series products, as well
 #' as derived phenophase estimates based upon these time series.
 #' @keywords PhenoCam, Daymet, climate data, modelling, post-processing
@@ -55,7 +56,8 @@ process_phenocam <- function(
   save_gcc90 = FALSE,
   weights_as_n = FALSE,
   span = NULL,
-  wiggle_penalty = 0.5
+  wiggle_penalty = 0.5,
+  mat = NULL
 ){
   
   # check file
@@ -126,6 +128,7 @@ process_phenocam <- function(
       phenophases(data = df,
                   out_dir = out_dir,
                   internal = FALSE, 
+                  mat = mat,
                   wiggle_penalty = wiggle_penalty)),
       silent = TRUE)
     
